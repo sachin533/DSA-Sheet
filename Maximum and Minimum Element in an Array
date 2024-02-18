@@ -21,6 +21,6 @@ public class Short {
         int arr[] = { 3, 6, 1, 8, 56 };
         // Shaarr(arr);
         ReverseArr(arr);
-    }
+    } 
 
 }
