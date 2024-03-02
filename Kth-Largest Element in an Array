@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+public class KthElement {
+
+    public static int FindKth(int arr[] , int k){
+         Arrays.sort(arr);
+         int n = arr.length;
+         return  arr[n-k];
+
+    }
+
+    public static void main(String args[]){
+
+        int arr[] = {2,6,3,9,14};
+        int k = 2;
+        System.out.println("The "+k+" th element in the array is : " +FindKth(arr,k));
+
+    }
+}
