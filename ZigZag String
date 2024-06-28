@@ -1,0 +1,32 @@
+import java.net.SocketPermission;
+
+import javax.swing.plaf.synth.SynthToggleButtonUI;
+
+public class Zigzag {
+
+    public static void Zig(String s, int numRows ){
+        String[] ans = new String[numRows];
+        for(int i=0; i<numRows; i++){
+            ans[i] = "";
+        }
+        int i=0;
+        while(i<s.length()){
+            for(int index=0; index<numRows && i<s.length(); index++){
+                ans[index] += s.charAt(i++);
+            }
+            for(int index=numRows-2; index>0 && i<s.length(); index--){
+                ans[index] += s.charAt(i++);
+            }
+        }
+        String res = "";
+        for(String str : ans){
+            res+=str;
+            System.out.println(res);
+        }
+    }
+    public static void main(String args[]){
+        String s = "PAYPALISHIRING";
+        int numRows = 4;    
+      Zig(s, numRows);
+    }   
+}
