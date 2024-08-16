@@ -1,0 +1,40 @@
+// public class FindSubstringIndex {
+
+//     public static void main(String[] args) {
+//         String a = "AABAACAADAABAABA";
+//         String b = "AABA";
+
+//         // Find the index of the first occurrence of 'b' in 'a'
+//         int index = a.indexOf(b);
+
+//         // Output the result
+//         if (index != -1) {
+//             System.out.println("Pattern found at index " + index);
+//         } else {
+//             System.out.println("Pattern not found.");
+//         }
+//     }
+// }
+
+
+
+public class FindSubstringOccurrences {
+
+    public static void main(String[] args) {
+        String a = "AABAACAADAABAABA";
+        String b = "AABA";
+
+        int count = 0;
+        int index = 0;
+
+        // Loop to find all occurrences of 'b' in 'a'
+        while ((index = a.indexOf(b, index)) != -1) {
+            count++;
+            System.out.println("Pattern found at index " + index);
+            index += b.length(); // Move past the last found index
+        }
+
+        System.out.println("Pattern occurred " + count + " times.");
+    }
+}
+
