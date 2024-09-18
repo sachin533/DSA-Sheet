@@ -77,11 +77,37 @@ public class MinMaxarray {
         System.out.println("Min Element = " + min(a));
         System.out.println("Max Element = " + max(a));
 
-        // Arrays.sort(a);
-
-        // System.out.println("Min Element = " + a[0]);
-        // System.out.println("Max Element = " + a[a.length - 1]);
+       
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+
+public class MinMaxarray {
+    public static void main(String args[]) {
+        int a[] = { 3, 5, 4, 1, 9 };
+
+        Arrays.sort(a);
+
+        System.out.println("Min Element = " + a[0]);
+        System.out.println("Max Element = " + a[a.length - 1]);
+    }
+
+}
+
+                            
 
