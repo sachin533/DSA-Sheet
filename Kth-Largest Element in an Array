@@ -17,3 +17,46 @@ public class KthElement {
 
     }
 }
+
+
+
+
+
+
+
+
+import java.util.Arrays;
+import java.util.Collections;
+
+public class KthLargestElement {
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 1, 5, 6, 4};
+        int k = 2;
+        
+        // Step 1: Sort the array
+        Arrays.sort(nums);
+        
+        // Step 2: Reverse the array
+        reverseArray(nums);
+        
+        // Step 3: Find the K'th largest element
+        int kthLargest = nums[k - 1];
+        
+        // Print the K'th largest element
+        System.out.println("The " + k + "th largest element is: " + kthLargest);
+    }
+
+    // Method to reverse the array
+    public static void reverseArray(int[] array) {
+        int left = 0;
+        int right = array.length - 1;
+        while (left < right) {
+            // Swap elements at positions left and right
+            int temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
+            left++;
+            right--;
+        }
+    }
+}
