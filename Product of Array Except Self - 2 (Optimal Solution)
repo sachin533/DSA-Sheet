@@ -1,0 +1,40 @@
+public class ProductofArrayExceptSelf {
+
+    public static int[] Productis(int nums[]) {
+        int n = nums.length;
+
+        int[] prefix = new int[n];
+        int[] suffix = new int[n];
+        int[] ans = new int[n];
+
+        // Initialize the prefix array
+        prefix[0] = 1; // No element before the first element
+        for (int i = 1; i < n; i++) {
+            prefix[i] = prefix[i - 1] * nums[i - 1];
+        }
+
+        // Initialize the suffix array
+        suffix[n - 1] = 1; // No element after the last element
+        for (int i = n - 2; i >= 0; i--) {
+            suffix[i] = suffix[i + 1] * nums[i + 1];
+        }
+
+        // Compute the answer array using prefix and suffix arrays
+        for (int i = 0; i < n; i++) {
+            ans[i] = prefix[i] * suffix[i];
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4};
+
+        int[] result = Productis(nums);
+
+        // Print the result
+        for (int value : result) {
+            System.out.print(value + " ");
+        }
+    }
+}
