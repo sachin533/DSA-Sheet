@@ -1,0 +1,32 @@
+public class PairequalToSum {
+
+    public static boolean Equaltosum(int arr[], int X) {
+        int n = arr.length;
+
+        for (int l = 0; l < n; l++) {
+            int left = arr[l];
+
+            for (int r = n - 1; r >= 0; r--) {
+                int right = arr[r];
+
+                int ans = right + left;
+
+                if(ans == X){
+                    return true;
+                }
+            }
+            
+        }
+
+        return false;
+
+    }
+
+    public static void main(String args[]) {
+        int arr[] = { 11,15,26,38,9,10};
+        int X = 21;
+        System.out.print(Equaltosum(arr, X));
+
+    }
+
+}
