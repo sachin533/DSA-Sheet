@@ -1,0 +1,15 @@
+import java.util.Arrays;
+
+public class KthSmallNumber {
+
+    public static int FindSmallNumber(int nums[], int k) {
+        Arrays.sort(nums); // Sort the array
+        return nums[k - 1]; // Return the k-th smallest element (using zero-based index)
+    }
+
+    public static void main(String args[]) {
+        int nums[] = {7, 10, 4, 3, 20, 15};
+        int k = 3;
+        System.out.println(FindSmallNumber(nums, k)); 
+    }
+}
