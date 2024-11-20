@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class PrintSubArr {
+
+    // Helper method to generate combinations
+    public static void generateCombinations(int[] arr, int r, int start, List<Integer> current) {
+        // Base case: when the combination size equals r
+        if (current.size() == r) {
+            System.out.println(current);
+            return;
+        }
+
+        // Iterate through the remaining elements
+        for (int i = start; i < arr.length; i++) {
+            // Add current element to the combination
+            current.add(arr[i]);
+            // Recursive call to build the next part of the combination
+            generateCombinations(arr, r, i + 1, current);
+            // Backtrack to explore other possibilities
+            current.remove(current.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+
+        // Example 1: r = 2
+        System.out.println("Combinations of size 2:");
+        generateCombinations(arr, 2, 0, new ArrayList<>());
+
+        // Example 2: r = 3
+        System.out.println("Combinations of size 3:");
+        generateCombinations(arr, 3, 0, new ArrayList<>());
+    }
+}
