@@ -1,0 +1,30 @@
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class DuplicateSubstring {
+    public static Set<String> findsubDup(String str) {
+        Set<String> results = new LinkedHashSet<>();
+        int n = str.length();
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j <= n; j++) {
+                String s1 = str.substring(i, j);
+                String s2 = str.substring(j);
+
+                // Add substring if it's not already in the results
+                if (s2.contains(s1)) { // Check if s2 contains s1
+                    results.add(s1);
+                }
+            }
+        }
+        return results;
+    }
+
+    public static void main(String args[]) {
+        String str = "abcabc";
+        Set<String> results = findsubDup(str);
+
+        for (String result : results) {
+            System.out.println(result);
+        }
+    }
+}
