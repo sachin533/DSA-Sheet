@@ -1,0 +1,59 @@
+import java.util.Arrays;
+
+public class NextPermutation {
+    public static void main(String[] args) {
+        int[] arr = {2, 4, 1, 7, 5, 0};
+        nextPermutation(arr);
+        System.out.println("Next Permutation: " + Arrays.toString(arr));
+    }
+
+    public static void nextPermutation(int[] nums) {
+        int n = nums.length;
+
+        // Step 1: Find the first index 'p' such that nums[p] < nums[p + 1]
+        int p = -1;
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                p = i;
+                break;
+            }
+        }
+
+        // If no such index is found, the array is in descending order
+        if (p == -1) {
+            reverse(nums, 0, n - 1);
+            return;
+        }
+
+        // Step 2: Find the smallest element greater than nums[p] from the right
+        int q = -1;
+        for (int i = n - 1; i > p; i--) {
+            if (nums[i] > nums[p]) {
+                q = i;
+                break;
+            }
+        }
+
+        // Step 3: Swap elements at index 'p' and 'q'
+        swap(nums, p, q);
+
+        // Step 4: Reverse the elements after index 'p'
+        reverse(nums, p + 1, n - 1);
+    }
+
+    // Helper method to swap two elements
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    // Helper method to reverse a subarray
+    private static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
+        }
+    }
+}
