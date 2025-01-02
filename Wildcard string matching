@@ -1,0 +1,33 @@
+public class PatternMatching {
+
+    public static boolean isMatch(int i, int j, String pattern, String text) {
+        if (i < 0 && j < 0) return true;
+        if (i < 0 && j >= 0) return false;
+        if (j < 0 && i >= 0) {
+            for (int ii = 0; ii <= i; ii++) {
+                if (pattern.charAt(ii) != '*') return false;
+            }
+            return true;
+        }
+
+        if (pattern.charAt(i) == text.charAt(j) || pattern.charAt(i) == '?') {
+            return isMatch(i - 1, j - 1, pattern, text);
+        }
+
+        if (pattern.charAt(i) == '*') {
+            return isMatch(i - 1, j, pattern, text) || isMatch(i, j - 1, pattern, text);
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String pattern = "a*b?c";
+        String text = "aabxc";
+        int patternLength = pattern.length();
+        int textLength = text.length();
+
+        boolean result = isMatch(patternLength - 1, textLength - 1, pattern, text);
+        System.out.println("Match result: " + result);
+    }
+}
