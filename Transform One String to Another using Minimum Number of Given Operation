@@ -10,16 +10,20 @@ class Solution
             
             return -1;
         }
-        
+
         for(int i = 0 ; i < m ; i++)
         {
             s1 += A.charAt(i);
         }
+//E = 69, A = 65, C = 67, B = 66, D = 68
+//s1 = 69 + 65 + 67 + 66 + 68 = 335
         
         for(int i = 0 ; i < n ; i++)
         {
             s2 += B.charAt(i);
         }
+//A = 65, B = 66, C = 67, D = 68, E = 69
+//s2 = 65 + 66 + 67 + 68 + 69 = 335
         
         if(s1 != s2)
         {
