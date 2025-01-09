@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class Solution {
+    public List<String> letterCombinations(String digits) {
+        if (digits == null || digits.length() == 0) {
+            return new ArrayList<>();
+        }
+        
+        // Mapping digits to corresponding letters
+        Map<Character, String> digitToLetters = new HashMap<>();
+        digitToLetters.put('2', "abc");
+        digitToLetters.put('3', "def");
+        digitToLetters.put('4', "ghi");
+        digitToLetters.put('5', "jkl");
+        digitToLetters.put('6', "mno");
+        digitToLetters.put('7', "pqrs");
+        digitToLetters.put('8', "tuv");
+        digitToLetters.put('9', "wxyz");
+
+        List<String> result = new ArrayList<>();
+        backtrack(digits, 0, new StringBuilder(), result, digitToLetters);
+        return result;
+    }
+    
+    private void backtrack(String digits, int index, StringBuilder current, List<String> result, Map<Character, String> digitToLetters) {
+        // If the current combination is of the same length as digits, add to the result
+        if (index == digits.length()) {
+            result.add(current.toString());
+            return;
+        }
+
+        // Get the corresponding letters for the current digit
+        char digit = digits.charAt(index);
+        String letters = digitToLetters.get(digit);
+
+        // Explore all possible combinations by adding one letter at a time
+        for (char letter : letters.toCharArray()) {
+            current.append(letter);
+            backtrack(digits, index + 1, current, result, digitToLetters);
+            current.deleteCharAt(current.length() - 1); // Backtrack
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        
+        // Test case 1
+        System.out.println(solution.letterCombinations("23"));
+        
+        // Test case 2
+        System.out.println(solution.letterCombinations(""));
+        
+        // Test case 3
+        System.out.println(solution.letterCombinations("2"));
+    }
+}
