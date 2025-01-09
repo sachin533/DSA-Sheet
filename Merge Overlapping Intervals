@@ -1,43 +1,45 @@
-package leetcode.medium;
+// Java Code to Merge Overlapping Intervals by Checking
+// All Possible Overlaps
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
-/**
- * Created by nikoo28 on 11/8/19 12:58 AM
- */
+class GfG {
 
-class MergeIntervals {
+    static List<int[]> mergeOverlap(int[][] arr) {
+        int n = arr.length;
 
-  int[][] merge(int[][] intervals) {
+        Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
+        List<int[]> res = new ArrayList<>();
 
-    if (intervals.length <= 1)
-      return intervals;
+        // Checking for all possible overlaps
+        for (int i = 0; i < n; i++) {
+            int start = arr[i][0];
+            int end = arr[i][1];
 
-    // Sort by ascending starting point
-    Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
+            // Skipping already merged intervals
+            if (!res.isEmpty() && res.get(res.size() - 1)[1] >= end) {
+                continue;
+            }
 
-    List<int[]> result = new ArrayList<>();
-
-    int[] newInterval = intervals[0];
-    result.add(newInterval);
-
-    for (int[] interval : intervals) {
-      if (interval[0] <= newInterval[1])
-        // Overlapping intervals,
-        // update the end if needed
-        newInterval[1] = Math.max(newInterval[1], interval[1]);
-      else {
-        // Disjoint intervals,
-        // add the new interval to the list
-        newInterval = interval;
-        result.add(newInterval);
-      }
+            // Find the end of the merged range
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j][0] <= end) {
+                    end = Math.max(end, arr[j][1]);
+                }
+            }
+            res.add(new int[]{start, end});
+        }
+        return res;
     }
 
-    return result.toArray(new int[result.size()][]);
-  }
+    public static void main(String[] args) {
+        int[][] arr = {{7, 8}, {1, 5}, {2, 4}, {4, 6}};
+        List<int[]> res = mergeOverlap(arr);
 
+        for (int[] interval : res) {
+            System.out.println(interval[0] + " " + interval[1]);
+        }
+    }
 }
