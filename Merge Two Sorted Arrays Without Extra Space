@@ -1,0 +1,45 @@
+import java.util.Arrays;
+
+public class SortTwoAraay {
+    public static int[][] MergeandSort(int a[], int b[]) {
+        int n1 = a.length;
+        int n2 = b.length;
+        int i = 0, j = 0, k = 0;
+        int[] arr3 = new int[n1 + n2];
+
+        // Copy elements of a and b into arr3
+        while (i < n1) {
+            arr3[k++] = a[i++];
+        }
+        while (j < n2) {
+            arr3[k++] = b[j++];
+        }
+
+        // Sort the merged array
+        Arrays.sort(arr3);
+
+        // Copy sorted elements back into original arrays
+        for (i = 0; i < n1; i++) {
+            a[i] = arr3[i];
+        }
+        for (j = 0; j < n2; j++) {
+            b[j] = arr3[n1 + j];
+        }
+
+        return new int[][] {a, b};
+    }
+
+    public static void main(String[] args) {
+        int a[] = {2, 4, 7, 10};
+        int b[] = {2, 3};
+
+        int[][] sortedArrays = MergeandSort(a, b);
+
+        System.out.println("Sorted Array A: " + Arrays.toString(sortedArrays[0]));
+        System.out.println("Sorted Array B: " + Arrays.toString(sortedArrays[1]));
+    }
+}
+
+
+
+ so the final time complexity is O((n1 + n2) log(n1 + n2)).
