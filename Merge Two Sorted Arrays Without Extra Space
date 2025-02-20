@@ -43,3 +43,4 @@ public class SortTwoAraay {
 
 
  so the final time complexity is O((n1 + n2) log(n1 + n2)).
+Since arr3 is the only extra space-consuming structure, the final space complexity is O(n1 + n2).
