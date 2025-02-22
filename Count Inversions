@@ -26,4 +26,12 @@ public class InversionOfCount {
 }
 
 
+Complexity Analysis
+
+Time Complexity: O(N2), where N = size of the given array.
+Reason: We are using nested loops here and those two loops roughly run for N times.
+
+Space Complexity: O(1) as we are not using any extra space to solve this problem.
+
+
 
